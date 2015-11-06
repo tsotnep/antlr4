@@ -1,17 +1,23 @@
 grammar csv;
 
 //  P A R S E R
-parse //when non capital letter, it uses this as grammar
-    : line + EOF //+ is >= than 1 EOF = end of file
+//* zero or more
+//+ 1 or more
+//EOF = end of file
+//when capital leter, it means it uses this part as lexer
+//when non capital letter, it means it uses this oart as grammar
+
+parse
+    : line + EOF
 ;
 
 line
-    : TEXT (',' TEXT)* '\n'//* zero or more
+    : TEXT (',' TEXT)* '\n'
     | NUMBER (',' NUMBER)* '\n'
 ;
 
 // L E X E R
-TEXT //when capital leter, it means it uses this part as lexer
+TEXT
     : [a-zA-Z]+
 ;
 
